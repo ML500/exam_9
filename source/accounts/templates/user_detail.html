@@ -19,7 +19,10 @@
     <p>Фамилия: {{ user_obj.last_name }}</p>
     <p>Дата рождения: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
     <p>Почта: {{ user_obj.email }}</p>
-
+    <h6>Favorites</h6>
+    {% for i in photos %}
+        <li><a href="{% url 'webapp:photo_view' i.pk %}">{{ i }}</a></li>
+    {% endfor %}
 {#    <h2 class="text-center clear">Статьи автора:</h2>#}
 {#    {% include 'partial/article_list.html' %}#}
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Gallery{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <h1 class="text-center">Photo</h1>
+    {% for photo in photos %}
+        <div class="products">
+            <div class="photo-block">
+                <img class="avatar" src="{{ photo.picture.url }}" width="250" height="250" alt="photo">
+            </div>
+            <div class="text-block">
+
+                <a href="{% url "webapp:photo_view" photo.pk %}">{{ photo.sign }}</a>
+                <p>Автор: {{ photo.author }}</p>
+                <p>Дата: {{ photo.created_at }}</p>
+            </div>
+{#            {% if user.is_authenticated %}#}
+{#            <p>#}
+{#                <span class="counter">{{ photo.addFavorite }}</span>#}
+{#                {% with photo|add_by:user as added %}#}
+{#                    <a class="{% if added %}hidden{% endif %} add" href="{% url 'add_favorite' photo.pk %}">Add</a>#}
+{#                    <a class="{% if not added %}hidden{% endif %} remove" href="{% url 'remove_favotite' photo.pk %}">Remove</a>#}
+{#                {% endwith %}#}
+{#            </p>#}
+{#        {% endif %}#}
+
+
+{#            <div class="icon-block">#}
+{#                {% if perms.webapp.change_product %}#}
+{#                    <p class="icon update"><a href="{% url 'webapp:product_update' product.pk %}">Update</a></p>#}
+{#                {% endif %}#}
+{#                {% if perms.webapp.delete_product %}#}
+{#                    <p class="icon delete"><a href="{% url 'webapp:product_delete' product.pk %}">Delete</a></p>#}
+{#                {% endif %}#}
+{#            </div>#}
+        </div>
+    {% endfor %}
+{% endblock %}

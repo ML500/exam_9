@@ -9,6 +9,7 @@ from django.conf import settings
 
 from accounts.forms import MyUserCreationForm, UserChangeForm, ProfileChangeForm, \
     PasswordChangeForm, PasswordResetEmailForm, PasswordResetForm
+from webapp.models import Favorite, Photo
 
 from .models import AuthToken, Profile
 
@@ -60,16 +61,10 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     paginate_related_orphans = 0
 
     def get_context_data(self, **kwargs):
-        # articles = self.object.articles.order_by('-created_at')
-        # paginator = Paginator(articles, self.paginate_related_by, orphans=self.paginate_related_orphans)
-        # page_number = self.request.GET.get('page', 1)
-        # page = paginator.get_page(page_number)
-        # kwargs['page_obj'] = page
-        # kwargs['articles'] = page.object_list
-        # kwargs['is_paginated'] = page.has_other_pages()
-        # if self.object == self.request.user:   # на странице пользователя показываем
-        #     kwargs['show_mass_delete'] = True  # массовое удаление только владельцу
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        photos = Photo.objects.filter(photo_fav__user=self.kwargs.get('pk'))
+        context['photos'] = photos
+        return context
 
 
 class UserChangeView(UserPassesTestMixin, UpdateView):
