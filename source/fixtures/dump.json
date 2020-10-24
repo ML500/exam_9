@@ -4,18 +4,8 @@
   "pk": 2,
   "fields": {
     "picture": "user_pics/3_VdZ7KE2.webp",
-    "sign": "asffffff",
+    "sign": "\u041a\u043d\u0438\u0436\u043a\u0430",
     "created_at": "2020-10-24T10:07:01.473Z",
-    "author": 1
-  }
-},
-{
-  "model": "webapp.photo",
-  "pk": 3,
-  "fields": {
-    "picture": "user_pics/1_J1fipOP.jpg",
-    "sign": "krujki",
-    "created_at": "2020-10-24T10:07:10.086Z",
     "author": 1
   }
 },
@@ -24,17 +14,19 @@
   "pk": 4,
   "fields": {
     "picture": "user_pics/1_dk4GdE6.jpg",
-    "sign": "dfgfdg",
+    "sign": "\u041a\u0440\u0443\u0436\u043a\u0438",
     "created_at": "2020-10-24T10:07:22.495Z",
     "author": 1
   }
 },
 {
-  "model": "webapp.favorite",
-  "pk": 1,
+  "model": "webapp.photo",
+  "pk": 5,
   "fields": {
-    "photo": 3,
-    "user": 1
+    "picture": "user_pics/2_jfCqP4x.jpg",
+    "sign": "\u0421\u0443\u043c\u043a\u0430",
+    "created_at": "2020-10-24T12:57:52.893Z",
+    "author": 1
   }
 },
 {
@@ -47,10 +39,18 @@
 },
 {
   "model": "webapp.favorite",
-  "pk": 3,
+  "pk": 6,
   "fields": {
-    "photo": 4,
+    "photo": 5,
     "user": 1
+  }
+},
+{
+  "model": "webapp.favorite",
+  "pk": 7,
+  "fields": {
+    "photo": 5,
+    "user": 2
   }
 }
 ]
