@@ -24,16 +24,6 @@ class Favorite(models.Model):
     user = models.ForeignKey(get_user_model(), related_name='user_fav',
                              verbose_name='Пользователь', on_delete=models.CASCADE)
 
-
-class AddFavorite(models.Model):
-    user = models.ForeignKey(get_user_model(), related_name='user_add',
-                             verbose_name='Пользователь', on_delete=models.CASCADE)
-    photo = models.ForeignKey('webapp.Photo', on_delete=models.CASCADE,
-                              related_name='photo_add', verbose_name='Фото')
-
-    def __str__(self):
-        return f'{self.user.username} - {self.photo.sign}'
-
     class Meta:
-        verbose_name = 'Добаленить в избранное'
-        verbose_name_plural = 'Добаление в избранное'
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'

@@ -23,17 +23,18 @@
         <p>Подпись: {{ photo.sign }}</p>
         <p>Автор: {{ photo.author }}</p>
         <p>Дата: {{ photo.created_at }}</p>
-{#        <div>#}
-{#            <a id="add" href="#">Add in favorites</a>#}
-{#        </div>#}
-{#        <div>#}
-{#            <a id="remove" href="#">Remove from favorites</a>#}
-{#        </div>#}
+        {% if request.user.is_authenticated %}
+            <div>
+                <a class="add" id="add" href="{% url 'api:add' photo.pk %}">Add in favorites</a>
+            </div>
+            <div>
+                <a class="remove" id="remove" href="{% url 'api:remove' photo.pk %}">Remove from favorites</a>
+            </div>
 
-        {% for favorite in photo.photo_fav.all %}
-            <li><a href="{% url 'accounts:detail' favorite.pk %}">{{ favorite.user}}</a></li>
-        {% endfor %}
-
+            {% for favorite in photo.photo_fav.all %}
+                <li><a href="{% url 'accounts:detail' favorite.user.pk %}">{{ favorite.user}}</a></li>
+            {% endfor %}
+        {% endif %}
     </div>
     <hr>
 
